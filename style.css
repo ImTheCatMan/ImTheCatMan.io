@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'Cookies';
+    src:local(''),
+    url('./assets/Cookies.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Irrational';
+    src: local(''),
+    url('./assets/Irrational-L372g.ttf') format('truetype')
+}
+
+:root{
+    font-family: 'Cookies', 'Irrational','Segoe UI', Tahoma, sans-serif !important;
+    user-select: none;
+}
+
+body{
+    background-color: #d7a59c;
+    overflow: hidden;
+}
+
+#hrt{
+    width: 100%;
+    fill-opacity: 1;
+    fill: #4E8BB7;
+    stroke: black;
+    stroke-width: 1;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+    
+}
+
+.drawStroke{
+    animation: drawStroke 500ms ease-in-out forwards;
+}
+.unDrawStroke{
+    animation: undrawStroke 500ms ease-in-out forwards;
+}
+
+@keyframes drawStroke{
+    0%{stroke-dashoffset: 400; fill-opacity: 0;}
+    99%{stroke-dashoffset: 0; fill-opacity: 0;}
+    100%{stroke-dashoffset: 0; fill-opacity: 1;}
+}
+@keyframes undrawStroke{
+    0%{stroke-dashoffset: 0; fill-opacity: 1;}
+    1%{stroke-dashoffset: 0; fill-opacity: 0;}
+    100%{stroke-dashoffset: 400; fill-opacity: 0;}
+}
+
+#macka{
+    width: 100vw;
+    height: 100vh;
+    >svg{
+        transform: scale(0.3) translateY(-100%);
+        cursor: pointer;
+        #cat{
+            transform: translateY(100%);
+        }
+        #textbox{
+            opacity: 0;
+            transition: opacity 500ms ease-in-out;
+        }
+        
+    }
+}
+.opacity1{
+    opacity: 1 !important;
+}
+
+.emerge{animation:emerge 1000ms ease-in-out forwards}
+.leave{animation: leave 1000ms ease-in-out forwards}
+
+.pacing{
+    transform-origin: center;
+    animation: pacing 2000ms linear infinite;
+}
+
+.shake:hover{
+    transform-origin: center;
+    animation:infinite_shake 1000ms linear infinite;
+}
+
+.wave{
+    transform-origin: center;
+    animation:wave 1000ms linear infinite;
+}
+
+@keyframes emerge{
+    0%{transform: translateY(100%);}
+    100%{transform: translateY(0);}
+}
+@keyframes leave{
+    0%{transform: translateY(0);}
+    100%{transform: translateY(100%);}
+}
+
+@keyframes pacing{
+    0%{transform: translate(0,0) rotateY(0);}
+    20%{transform: translate(-0.5rem,1rem) rotateY(0);}
+    40%{transform: translate(-1rem,0) rotateY(0);}
+    100%{transform: translate(-1rem,0) rotateY(1turn);}
+}
+
+@keyframes infinite_shake{
+    0%{transform: translateX(0)  scale(0.3) translateY(-100%);}
+    50%{transform: translateX(-0.5rem)  scale(0.3) translateY(-100%);}
+    75%{transform: translateX(0.5rem)  scale(0.3) translateY(-100%);}
+    100%{transform: translateX(0)  scale(0.3) translateY(-100%);}
+}
+@keyframes wave{
+    0%{transform:  rotate(0);}
+    50%{transform:  rotate(5deg);}
+    100%{transform:  rotate(0);}
+}
+
+@media only screen and (max-width:600px){
+    #macka{
+        width: 100vw;
+        height: 100vh;
+        >svg{
+            transform: scale(0.9) translateY(0);
+            cursor: pointer;
+            #cat{
+                transform: translateY(100%);
+            }
+            #textbox{
+                opacity: 0;
+                transition: opacity 500ms ease-in-out;
+            }
+            
+        }
+    }
+    @keyframes infinite_shake{
+        0%{transform: translateX(0)  scale(0.9) translateY(0);}
+        50%{transform: translateX(-0.5rem)  scale(0.9) translateY(0);}
+        75%{transform: translateX(0.5rem)  scale(0.9) translateY(0);}
+        100%{transform: translateX(0)  scale(0.9) translateY(0);}
+    }
+}
